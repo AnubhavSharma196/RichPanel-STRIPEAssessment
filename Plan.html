@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Plan.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <title>Purchase Plan</title>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Choose the right plan for you</h2>
+
+        <!-- Add plan and interval selection inputs here -->
+        <div class="plan-selection">
+            <label for="plan">Select Plan:</label>
+            <select id="plan" name="plan">
+                <option value="mobile">Mobile</option>
+                <option value="basic">Basic</option>
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+            </select>
+
+            <label for="interval">Billing Interval:</label>
+            <select id="interval" name="interval">
+                <option value="month">Monthly</option>
+                <option value="year">Yearly</option>
+            </select>
+        </div>
+    <!-- Rest of your existing code -->
+</div>
+        <div class="price-row">
+            <table>
+                <tr>
+                    <th><button class="headings">Choices</button></th>
+                    <th><button class="headings">Mobile</button></th>
+                    <th><button class="headings">Basic</button></th>
+                    <th><button class="headings">Standard</button></th>
+                    <th><button class="headings">Premium</button></th>
+                </tr>
+                <tr>
+    <td>Monthly Price</td>
+    <td>&#8377;100</td>
+    <td>&#8377;200</td>
+    <td>&#8377;500</td>
+    <td>&#8377;700</td>
+</tr>
+<tr>
+    <td>Yearly Price</td>
+    <td>&#8377;1000</td>
+    <td>&#8377;2000</td>
+    <td>&#8377;5000</td>
+    <td>&#8377;7000</td>
+</tr>
+
+                <tr>
+                    <td>Video Quality</td>
+                    <td>Good</td>
+                    <td>Good</td>
+                    <td>Better</td>
+                    <td>Best</td>
+                </tr>
+                <tr>
+                    <td>Resolution</td>
+                    <td>480p</td>
+                    <td>480p</td>
+                    <td>1080p</td>
+                    <td>4K + HDR</td>
+                </tr>
+                <tr>
+                    <td>Devices you can use to watch</td>
+                    <td>Phone <br><br>Table</td>
+                    <td>Phone <br><br>Table <br><br>Computer <br><br>TV</td>
+                    <td>Phone <br><br>Table <br><br>Computer <br><br>TV</td>
+                    <td>Phone <br><br>Table <br><br>Computer <br><br>TV</td>
+                </tr>
+            </table>
+        </div>
+        <div class="tocen">
+           <!-- Set the action attribute to Payment.html -->
+           <form id="subscription-form" action="Payment.html">
+               <button class="Next" type="submit">Next</button>
+           </form>
+       </div>
+
+       <script src="https://js.stripe.com/v3/"></script>
+     <script>
+         // Get references to the plan and interval selection elements
+         var planSelect = document.getElementById('plan');
+         var intervalSelect = document.getElementById('interval');
+
+         // Attach event listener to the subscription form submission
+         var subscriptionForm = document.getElementById('subscription-form');
+         subscriptionForm.addEventListener('submit', function(event) {
+             // Get the selected plan and interval values
+             var selectedPlan = planSelect.value;
+             var selectedInterval = intervalSelect.value;
+             // Append the selected values as hidden inputs to the form
+             var planInput = document.createElement('input');
+             planInput.type = 'hidden';
+             planInput.name = 'plan';
+             planInput.value = selectedPlan;
+             subscriptionForm.appendChild(planInput);
+
+             var intervalInput = document.createElement('input');
+             intervalInput.type = 'hidden';
+             intervalInput.name = 'interval';
+             intervalInput.value = selectedInterval;
+             subscriptionForm.appendChild(intervalInput);
+         });
+     </script>
+</body>
+</html>
